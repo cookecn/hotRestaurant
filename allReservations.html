@@ -5,27 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All Reservations</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="container">
+
+        <div class="jumbotron">
+          <h1 class="text-center"><span class="fa fa-fire"></span> Hot Restaurant</h1>
+          <hr>
+          <h2 class="text-center"></h2>
+          <br>
+      
+          <div class="text-center">
+            <a href="/"><button class="btn btn-lg btn-primary"><span class="fa fa-list-alt"></span> Go Home </button></a>
+            <a href="/add"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
+          </div>
+      
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+      
+              <div class="card">
+                <div class="card-header">
+                  <strong>Character Database</strong></h3>
+                </div>
+                <div class="card-body">
+                  <ul id="character-section" class="list-group">
+      
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+          <p><a href="/api/newReservations">Table Link</a> | <a href="/api/waitlist">Wait List</a>
+        </div>
+      </footer>
+
+
 
         <script type="text/javascript">
 
-            $.get("/api/newReservation", function(data) {
+            $.get("/api/reservations", function(data) {
               for (var i = 0; i < data.length; i++) {
                 console.log(data[i]);
                 var listGroupItem = $("<li class='list-group-item'>");
       
-                listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-                listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+
                 listGroupItem.append($("<h3>").text("Username: " + data[i].userName));
-                listGroupItem.append($("<h3>").text("Password: " + data[i].password));
-                listGroupItem.append($("<h3>").text("Reservation: " + data[i].reservation));
+
 
       
-                $("#all-reservations").append(listGroupItem);
+                $("#character-section").append(listGroupItem);
+              }
+            });
+
+            $.get("/api/waitlist", function(data) {
+              for (var i = 5; i < data.length; i++) {
+                console.log(data[i]);
+                var listGroupItem = $("<li class='list-group-item'>");
+      
+
+                listGroupItem.append($("<h3>").text("Username: " + data[i].userName));
+
+
+      
+                $("#waitlist-reservations").append(listGroupItem);
               }
             });
           </script>
+
+          <!--Write a function that takes the users remove button 
+            selection and slices that item from reservation list 
+            and adds top item from waitlist to reservations-->
     
 </body>
 </html>

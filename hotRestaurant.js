@@ -25,30 +25,37 @@ app.get("/", function(req, res) {
 });
 
 app.get("/add", function(req, res) {
-    res.sendFile(path.join(__dirname, "add.html"));
+    res.sendFile(path.join(__dirname, "addUser.html"));
 });
 
 app.get("/reservation", function(req, res) {
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.sendFile(path.join(__dirname, "allReservations.html"));
 })
 
 app.get("/waitlist", function(req, res) {
-    res.sendFile(path.join(__dirname, "waitlist.html"));
+    return res.json(waitlist);
 });
 
-app.post("/api/reservations", function(req, res) {
+app.get("/api/newReservation", function(req, res) {
+    return res.json(newReservation);
+})
+
+app.post("/api/newReservation", function(req, res) {
 
     console.log(newReservation);
 
     if (newReservation.length < 5) {
         newReservation.push(req.body);
-        res.json(true);
-      }
-      else {
-        waitlist.push(req.body);
-        res.json(false);
+        res.json(req.body);
       }
     });
+
+app.post("/api/waitlist", function(req, res) {
+    console.log(waitlist);
+
+    waitlist.push(req.body);
+    res.json(req.body);
+});
   
 
 app.post("/api/clear", function(req, res) {

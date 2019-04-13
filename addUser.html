@@ -5,8 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Reservation</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+          <h1 class="text-center"><span class="fa fa-fire"></span> Hot Restaurant</h1>
+          <hr>
+          <h2 class="text-center"></h2>
+          <br>
+      
+          <div class="text-center">
+            <a href="/reservation"><button class="btn btn-lg btn-primary"><span class="fa fa-list-alt"></span> View Tables</button></a>
+            <a href="/add"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
+          </div>
+      
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name">
+              
+                <label for="exampleInputEmail1">Email Address</Address></label>
+                <input type="email" class="form-control" id="email" aria-describedby="nameHelp" placeholder="Email">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="name" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+              <label for="exampleGroupsize">Group Size</label>
+                <input type="size" class="form-control" id="reservatioin" aria-describedby="namHelp" placeholder=" How many in group">
+              
+            </div>
+            <button type="submit" class="btn btn-primary" id="add-btn">Submit</button>
+            </div>
+          </div>
+        
+          </form>
+
+          <footer class="footer">
+              <div class="container">
+                <p><a href="/api/newReservation">Table Link</a> | <a href="/api/waitlist">Wait List</a>
+              </div>
+            </footer>
     
 
 
@@ -20,7 +67,7 @@
           var newReservation = {
             name: $("#name").val().trim(),
             email: $("#email").val().trim(),
-            username: $("#username").val().trim(),
+            userName: $("#username").val().trim(),
             password: $("#password").val().trim(),
             reservation: $("#reservation").val().trim()
           };
