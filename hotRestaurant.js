@@ -36,12 +36,27 @@ app.get("/waitlist", function(req, res) {
     res.sendFile(path.join(__dirname, "waitlist.html"));
 });
 
+app.post("/api/reservations", function(req, res) {
 
+    console.log(newReservation);
 
+    if (newReservation.length < 5) {
+        newReservation.push(req.body);
+        res.json(true);
+      }
+      else {
+        waitlist.push(req.body);
+        res.json(false);
+      }
+    });
+  
 
+app.post("/api/clear", function(req, res) {
+    // Empty out the arrays of data
+    newReservation.length = 0;
 
-
-
+    res.json({ ok: true });
+});
 
 
 
