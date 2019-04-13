@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Reservations</title>
+</head>
+<body>
+
+        <script type="text/javascript">
+
+            $.get("/api/newReservation", function(data) {
+              for (var i = 0; i < data.length; i++) {
+                console.log(data[i]);
+                var listGroupItem = $("<li class='list-group-item'>");
+      
+                listGroupItem.append($("<h2>").text("Name: " + data[i].name));
+                listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+                listGroupItem.append($("<h3>").text("Username: " + data[i].userName));
+                listGroupItem.append($("<h3>").text("Password: " + data[i].password));
+                listGroupItem.append($("<h3>").text("Reservation: " + data[i].reservation));
+
+      
+                $("#all-reservations").append(listGroupItem);
+              }
+            });
+          </script>
+    
+</body>
+</html>
