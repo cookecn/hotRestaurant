@@ -1,0 +1,22 @@
+{
+  "name": "hotrestaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hotRestaurant.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookecn/hotRestaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cookecn/hotRestaurant/issues"
+  },
+  "homepage": "https://github.com/cookecn/hotRestaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
