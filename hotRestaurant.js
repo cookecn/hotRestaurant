@@ -17,7 +17,15 @@ var newReservation = [
     }
 ];
 
-var waitlist = [];
+var waitlist = [
+    {
+        name: "Colby",
+        email: "user@emial.com",
+        userName: "colbyUser",
+        password: "password",
+        reservation: 4       
+    }
+];
 
 
 app.get("/", function(req, res) {
@@ -33,12 +41,16 @@ app.get("/reservation", function(req, res) {
 })
 
 app.get("/waitlist", function(req, res) {
-    return res.json(waitlist);
+    res.sendFile(path.join(__dirname, "allReservations.html"))
 });
 
 app.get("/api/newReservation", function(req, res) {
     return res.json(newReservation);
-})
+});
+
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+});
 
 app.post("/api/newReservation", function(req, res) {
 
@@ -47,14 +59,21 @@ app.post("/api/newReservation", function(req, res) {
     if (newReservation.length < 5) {
         newReservation.push(req.body);
         res.json(req.body);
+        res.json(true);
       }
     });
 
 app.post("/api/waitlist", function(req, res) {
     console.log(waitlist);
 
-    waitlist.push(req.body);
-    res.json(req.body);
+    if (newReservation.length > 5) {
+
+        newReservation.push(waitlist);
+        waitlist.push(req.body);
+        res.json(req.body);
+        res.json(true);
+    }
+
 });
   
 

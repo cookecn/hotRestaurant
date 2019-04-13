@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All Reservations</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.0.js"
+  integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -31,7 +34,7 @@
       
               <div class="card">
                 <div class="card-header">
-                  <strong>Character Database</strong></h3>
+                  <strong>Current Reservations</strong></h3>
                 </div>
                 <div class="card-body">
                   <ul id="character-section" class="list-group">
@@ -41,6 +44,23 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+
+              <div class="col-12">
+        
+                <div class="card">
+                  <div class="card-header">
+                    <strong>Waitlist</strong></h3>
+                  </div>
+                  <div class="card-body">
+                    <ul id="waitlist-section" class="list-group">
+        
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
@@ -55,7 +75,7 @@
 
     <footer class="footer">
         <div class="container">
-          <p><a href="/api/newReservations">Table Link</a> | <a href="/api/waitlist">Wait List</a>
+          <p><a href="/api/newReservation">Table Link</a> | <a href="/api/waitlist">Wait List</a>
         </div>
       </footer>
 
@@ -63,7 +83,7 @@
 
         <script type="text/javascript">
 
-            $.get("/api/reservations", function(data) {
+            $.get("/api/newReservation", function(data) {
               for (var i = 0; i < data.length; i++) {
                 console.log(data[i]);
                 var listGroupItem = $("<li class='list-group-item'>");
@@ -78,7 +98,7 @@
             });
 
             $.get("/api/waitlist", function(data) {
-              for (var i = 5; i < data.length; i++) {
+              for (var i = 0; i < data.length; i++) {
                 console.log(data[i]);
                 var listGroupItem = $("<li class='list-group-item'>");
       
@@ -87,7 +107,7 @@
 
 
       
-                $("#waitlist-reservations").append(listGroupItem);
+                $("#waitlist-section").append(listGroupItem);
               }
             });
           </script>
@@ -95,6 +115,10 @@
           <!--Write a function that takes the users remove button 
             selection and slices that item from reservation list 
             and adds top item from waitlist to reservations-->
-    
+            <script
+            src="https://code.jquery.com/jquery-3.4.0.js"
+            integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+            crossorigin="anonymous"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
